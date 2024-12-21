@@ -33,7 +33,7 @@ public class MovieRequestDto {
         return rating;
     }
 
-    public Boolean getScreening() {
+    public Boolean getIsScreening() {
         return isScreening;
     }
 

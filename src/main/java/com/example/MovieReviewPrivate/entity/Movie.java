@@ -33,8 +33,12 @@ public class Movie {
         this.title = title;
     }
 
-    public Movie (String title, float rating, Boolean isScreening, String genre, Date releaseDate, Date closeDate) {
-
+    public Movie (String title, Boolean isScreening, String genre, Date releaseDate, Date closeDate) {
+        this.title=title;
+        this.isScreening=isScreening;
+        this.genre=genre;
+        this.releaseDate=releaseDate;
+        this.closeDate=closeDate;
     }
 
 
