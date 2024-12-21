@@ -14,7 +14,7 @@ public class MovieService {
     }
 
     public void createMovie(MovieRequestDto dto) {
-        Movie movie = new Movie(dto.getTitle());
+        Movie movie = new Movie(dto.getTitle(),dto.getIsScreening(),dto.getGenre(),dto.getReleaseDate(),dto.getCloseDate());
         movieRepository.save(movie);
     }
 }
