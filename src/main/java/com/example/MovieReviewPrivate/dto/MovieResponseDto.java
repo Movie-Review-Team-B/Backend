@@ -43,4 +43,6 @@ public class MovieResponseDto {
     public Date getCloseDate() {
         return closeDate;
     }
+
+
 }
