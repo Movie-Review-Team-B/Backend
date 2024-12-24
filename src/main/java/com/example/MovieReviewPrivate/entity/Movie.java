@@ -1,5 +1,6 @@
 package com.example.MovieReviewPrivate.entity;
 
+import com.example.MovieReviewPrivate.dto.MovieResponseDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -41,5 +42,15 @@ public class Movie {
         this.closeDate=closeDate;
     }
 
+    public void update(String title, Boolean isScreening, String genre, Date releaseDate, Date closeDate) {
+        this.title = title;
+        this.isScreening=isScreening;
+        this.genre=genre;
+        this.releaseDate=releaseDate;
+        this.closeDate=closeDate;
+    }
 
+    public MovieResponseDto toDto() {
+        return new MovieResponseDto(id, title, rating, isScreening, genre, releaseDate, closeDate);
+    }
 }

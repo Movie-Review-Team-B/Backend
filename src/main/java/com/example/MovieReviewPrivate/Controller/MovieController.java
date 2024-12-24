@@ -5,10 +5,7 @@ import com.example.MovieReviewPrivate.dto.MovieRequestDto;
 import com.example.MovieReviewPrivate.dto.MovieResponseDto;
 import com.example.MovieReviewPrivate.service.MovieService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,14 +20,7 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-//    @PostMapping
-//    public ResponseEntity<Map<String, String>> createMovie(@RequestBody MovieRequestDto dto) {
-//        movieService.createMovie(dto);
-//        Map<String,String>  response = new HashMap<>();
-//        response.put("message","영화가 성공적으로 생성되었습니다.");
-//        return ResponseEntity.status(201).body(response);
-//    }
-
+    // 영화 생성
     @PostMapping
     public ResponseEntity<Map<String, String>> createMovie(@RequestBody MovieRequestDto dto) {
         movieService.createMovie(dto);
@@ -42,7 +32,25 @@ public class MovieController {
         return ResponseEntity.status(201).body(response);
     }
 
+    // 모든 영화 조회
+    @GetMapping
+    public ResponseEntity<ApiResponseDto<List<MovieResponseDto>>> getAllMovies(@RequestParam(value = "isScreening",required = false) Boolean isScreening) {
+        List<MovieResponseDto> movies = movieService.getAllMovies();
 
+        return ResponseEntity.status(200).body(new ApiResponseDto<>("success","영화 목록이 조회되었습니다.",movies));
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<ApiResponseDto<Void>> updateMovie(@PathVariable Long id, @RequestBody MovieRequestDto dto) {
+        movieService.updateMovie(id, dto);
+        return ResponseEntity.status(200).body(new ApiResponseDto<>("success","할 일이 수정되었습니다."));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ApiResponseDto<Void>> deleteMovie(@PathVariable Long id) {
+        movieService.deleteMovie(id);
+        return ResponseEntity.status(200).body(new ApiResponseDto<>("success","할 일이 삭제되었습니다."));
+    }
 
 
 
