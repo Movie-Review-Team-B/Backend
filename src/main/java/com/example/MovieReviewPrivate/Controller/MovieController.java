@@ -40,12 +40,14 @@ public class MovieController {
         return ResponseEntity.status(200).body(new ApiResponseDto<>("success","영화 목록이 조회되었습니다.",movies));
     }
 
+    // 영화 수정
     @PatchMapping("/{id}")
     public ResponseEntity<ApiResponseDto<Void>> updateMovie(@PathVariable Long id, @RequestBody MovieRequestDto dto) {
         movieService.updateMovie(id, dto);
         return ResponseEntity.status(200).body(new ApiResponseDto<>("success","할 일이 수정되었습니다."));
     }
 
+    // 영화 삭제
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponseDto<Void>> deleteMovie(@PathVariable Long id) {
         movieService.deleteMovie(id);

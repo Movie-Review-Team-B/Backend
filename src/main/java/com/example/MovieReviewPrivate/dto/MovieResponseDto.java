@@ -6,12 +6,12 @@ public class MovieResponseDto {
     private final Long id;
     private final String title;
     private final float rating;
-    private final boolean isScreening;
+    private final Boolean isScreening;
     private final String genre;
     private final Date releaseDate;
     private final Date closeDate;
 
-    public MovieResponseDto(Long id, String title, float rating, boolean isScreening, String genre, Date releaseDate, Date closeDate) {
+    public MovieResponseDto(Long id, String title, float rating, Boolean isScreening, String genre, Date releaseDate, Date closeDate) {
         this.id=id;
         this.title=title;
         this.rating=rating;
@@ -31,7 +31,7 @@ public class MovieResponseDto {
     public float getRating() {
         return rating;
     }
-    public boolean isScreening() {
+    public Boolean isScreening() {
         return isScreening;
     }
     public String getGenre() {
